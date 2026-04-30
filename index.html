@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loik Seller — Премиум носки из Узбекистана | Чистый хлопок высшего качества</title>
+    <meta name="description" content="Loik Seller — оптовые поставки носков из Узбекистана. Чистый хлопок, высшее качество, цена ниже рынка СНГ и РФ. Агентская комиссия 25-30%.">
+    <style>
+        :root {
+            --bg: #fafaf8;
+            --surface: #ffffff;
+            --dark: #0f172a;
+            --navy: #0c1e3a;
+            --gold: #c8963e;
+            --gold-light: #e0b865;
+            --gold-dark: #a0762a;
+            --accent: #d4a853;
+            --text: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border: #e8e5df;
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 20px 60px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --container: 1240px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== CANVAS PARTICLES ========== */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+        }
+
+        /* ========== HEADER / NAV ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+            padding: 0 20px;
+        }
+        .header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+        .nav {
+            max-width: var(--container);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+            z-index: 1001;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 6px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.93rem;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: var(--navy);
+            background: rgba(0, 0, 0, 0.03);
+        }
+        .nav-cta {
+            background: var(--gold) !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+            padding: 10px 22px !important;
+            border-radius: 50px !important;
+            transition: var(--transition) !important;
+            box-shadow: 0 4px 16px rgba(200, 150, 62, 0.35);
+        }
+        .nav-cta:hover {
+            background: var(--gold-dark) !important;
+            box-shadow: 0 6px 24px rgba(200, 150, 62, 0.5) !important;
+            transform: translateY(-2px);
+        }
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+        .burger span {
+            width: 28px;
+            height: 2.5px;
+            background: var(--navy);
+            border-radius: 4px;
+            transition: var(--transition);
+            display: block;
+        }
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            overflow: hidden;
+        }
+        .hero-bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .hero-bg-glow.g1 {
+            background: #d4a853;
+            top: -10%;
+            left: -15%;
+            animation: floatGlow 8s ease-in-out infinite;
+        }
+        .hero-bg-glow.g2 {
+            background: #3b5998;
+            bottom: -15%;
+            right: -10%;
+            animation: floatGlow 10s ease-in-out infinite reverse;
+        }
+        @keyframes floatGlow {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(40px, -30px) scale(1.15);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+        .hero-inner {
+            max-width: 800px;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 168, 83, 0.12);
+            color: var(--gold-dark);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            animation: fadeInUp 0.7s ease forwards;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.7s 0.1s ease forwards;
+            opacity: 0;
+        }
+        .hero h1 .gold {
+            color: var(--gold);
+            display: inline-block;
+            position: relative;
+        }
+        .hero h1 .gold::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(212, 168, 83, 0.25);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            animation: fadeInUp 0.7s 0.2s ease forwards;
+            opacity: 0;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.7s 0.3s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            letter-spacing: 0.2px;
+            font-family: var(--font);
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: #fff;
+            box-shadow: 0 6px 28px rgba(200, 150, 62, 0.4);
+        }
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(200, 150, 62, 0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+        .btn-outline:hover {
+            background: var(--navy);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .btn-white {
+            background: #fff;
+            color: var(--navy);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        .btn-white:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* ========== SCROLL INDICATOR ========== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounceDown 2s ease-in-out infinite;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .scroll-indicator span {
+            display: block;
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        @keyframes bounceDown {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(14px);
+            }
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 90px 20px;
+        }
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+        .section-label {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--navy);
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ========== STATS ROW ========== */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 2;
+        }
+        .stat-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-4px);
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* ========== PRODUCTS / PORTFOLIO ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+        }
+        .product-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+        }
+        .product-card-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f5f0e8, #e8e0d5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-card-img .sock-emoji {
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+            transition: var(--transition);
+        }
+        .product-card:hover .sock-emoji {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #22c55e;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+        .product-badge.hot {
+            background: #ef4444;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 18px rgba(239, 68, 68, 0);
+            }
+        }
+        .product-card-body {
+            padding: 22px 20px;
+        }
+        .product-card-body h3 {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .product-card-body .price {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+        }
+        .product-card-body .price-old {
+            text-decoration: line-through;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+        .product-card-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ========== ADVANTAGES ========== */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .adv-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .adv-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-4px);
+        }
+        .adv-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(212, 168, 83, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 16px;
+        }
+        .adv-card h4 {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .adv-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ========== VIDEO SECTION ========== */
+        .video-section {
+            background: var(--navy);
+            color: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            padding: 70px 40px;
+            text-align: center;
+        }
+        .video-section .section-title {
+            color: #fff;
+        }
+        .video-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .video-placeholder {
+            width: 100%;
+            max-width: 700px;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            margin: 30px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+        .video-placeholder:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            transition: var(--transition);
+            box-shadow: 0 8px 32px rgba(200, 150, 62, 0.5);
+        }
+        .video-placeholder:hover .play-btn {
+            transform: scale(1.1);
+            box-shadow: 0 16px 48px rgba(200, 150, 62, 0.7);
+        }
+
+        /* ========== REVIEWS ========== */
+        .reviews-slider {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px 0 20px;
+            scrollbar-width: none;
+            cursor: grab;
+        }
+        .reviews-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .review-card {
+            min-width: 340px;
+            max-width: 380px;
+            flex-shrink: 0;
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            scroll-snap-align: start;
+            transition: var(--transition);
+        }
+        .review-card:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+        .review-stars {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .review-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .review-author {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 0.95rem;
+        }
+        .review-company {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== COMMISSION CALCULATOR ========== */
+        .calculator-box {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .calculator-box input[type="range"] {
+            width: 100%;
+            margin: 16px 0;
+            accent-color: var(--gold);
+            height: 8px;
+        }
+        .calculator-result {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -1px;
+        }
+        .calculator-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        /* ========== FAQ / SUPPORT ========== */
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .faq-item {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font);
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            color: var(--gold-dark);
+        }
+        .faq-arrow {
+            transition: var(--transition);
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 24px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+
+        /* ========== CONTACT ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-info-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(212, 168, 83, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .contact-info-item h5 {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+        .contact-info-item span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .contact-form {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            transition: var(--transition);
+            background: #fdfdfc;
+            resize: vertical;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.1);
+            background: #fff;
+        }
+        .contact-form textarea {
+            min-height: 120px;
+        }
+
+        /* ========== PROMO BANNER ========== */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--navy), #1a3355);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(212, 168, 83, 0.1);
+            pointer-events: none;
+        }
+        .promo-banner h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .promo-banner p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .promo-banner .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 20px 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-grid {
+            max-width: var(--container);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer h4 {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer a:hover {
+            color: var(--gold-light);
+        }
+        .footer-bottom {
+            max-width: var(--container);
+            margin: 30px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ========== FLOATING BUTTONS ========== */
+        .float-btns {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .float-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            color: #fff;
+        }
+        .float-btn.tg {
+            background: #2aabee;
+        }
+        .float-btn.wa {
+            background: #25d366;
+        }
+        .float-btn:hover {
+            transform: scale(1.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+            }
+            .nav-links.open {
+                transform: translateX(0);
+            }
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 14px 24px;
+            }
+            .burger {
+                display: flex;
+            }
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+        @media (max-width: 540px) {
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: -0.5px;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .video-placeholder {
+                height: 220px;
+            }
+            .promo-banner {
+                padding: 30px 20px;
+            }
+            .promo-banner h3 {
+                font-size: 1.4rem;
+            }
+            .review-card {
+                min-width: 280px;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PARTICLES CANVAS ==================== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">🧦</div>
+                Loik Seller
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#products" onclick="closeMenu()">Продукция</a></li>
+                <li><a href="#advantages" onclick="closeMenu()">Преимущества</a></li>
+                <li><a href="#reviews" onclick="closeMenu()">Отзывы</a></li>
+                <li><a href="#faq" onclick="closeMenu()">Поддержка</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Контакты</a></li>
+                <li><a href="#contact" class="nav-cta" onclick="closeMenu()">🚀 Начать сотрудничество</a></li>
+            </ul>
+            <button class="burger" id="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-bg-glow g1"></div>
+        <div class="hero-bg-glow g2"></div>
+        <div class="hero-inner">
+            <div class="hero-badge">🇺🇿 Прямые поставки из Узбекистана</div>
+            <h1>Носки <span class="gold">премиум-класса</span> из чистого хлопка</h1>
+            <p>Высшее качество по ценам <strong>ниже рынка СНГ и РФ на 30-50%</strong>. Я как агент беру комиссию <strong>25-30%</strong> от продаж — зарабатываем вместе!</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">📦 Смотреть продукцию</a>
+                <a href="#contact" class="btn btn-outline">💬 Связаться со мной</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
+            <span>↓</span>
+        </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <section class="section" id="stats" style="padding-top:20px;">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Партнёров в СНГ</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="120">0</div>
+                    <div class="stat-label">Тонн хлопка в год</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">% экономии для клиентов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="30">0</div>
+                    <div class="stat-label">% ваша комиссия</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCTS / PORTFOLIO ==================== -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">🧦 Портфолио</span>
+                <h2 class="section-title">Наша продукция</h2>
+                <p class="section-subtitle mx-auto">Чистый узбекский хлопок — мягкость, прочность и комфорт. Все позиции доступны к оптовому заказу прямо сейчас.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-card-img">
+                        <span class="sock-emoji">🧦</span>
+                        <span class="product-badge hot">ХИТ</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Классические мужские носки</h3>
+                        <p>100% хлопок, плотность 220 г/м²</p>
+                        <span class="price">от 0.45$ <span class="price-old">0.90$</span></span>
+                        <p style="font-size:0.8rem;color:#22c55e;">Экономия до 50%</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" style="background:linear-gradient(135deg,#f8f4f0,#e8ddd0);">
+                        <span class="sock-emoji">🧦</span>
+                        <span class="product-badge">NEW</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Женские хлопковые носки</h3>
+                        <p>Мягкая резинка, дышащая ткань</p>
+                        <span class="price">от 0.40$ <span class="price-old">0.85$</span></span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" style="background:linear-gradient(135deg,#f0f4f8,#d5e0e8);">
+                        <span class="sock-emoji">🧦</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Детские носки</h3>
+                        <p>Гипоаллергенно, безопасные красители</p>
+                        <span class="price">от 0.30$ <span class="price-old">0.70$</span></span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" style="background:linear-gradient(135deg,#f5f0e8,#e0d5c5);">
+                        <span class="sock-emoji">🧦</span>
+                        <span class="product-badge hot">АКЦИЯ</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Спортивные носки</h3>
+                        <p>Усиленная пятка и носок, влагоотвод</p>
+                        <span class="price">от 0.55$ <span class="price-old">1.10$</span></span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" style="background:linear-gradient(135deg,#faf5f0,#e8d8c8);">
+                        <span class="sock-emoji">🧦</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Термо-носки</h3>
+                        <p>Двойная вязка, тёплые и дышащие</p>
+                        <span class="price">от 0.75$ <span class="price-old">1.50$</span></span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-img" style="background:linear-gradient(135deg,#f8f8f5,#e5e0d8);">
+                        <span class="sock-emoji">🧦</span>
+                        <span class="product-badge">VIP</span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Премиум подарочный набор</h3>
+                        <p>6 пар в стильной упаковке</p>
+                        <span class="price">от 3.90$ <span class="price-old">7.80$</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ADVANTAGES ==================== -->
+    <section class="section" id="advantages" style="background:#fff;">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">⭐ Почему мы</span>
+                <h2 class="section-title">Преимущества работы с Loik Seller</h2>
+                <p class="section-subtitle mx-auto">Мы не просто продаём носки — мы строим долгосрочные партнёрские отношения.</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="adv-card">
+                    <div class="adv-icon">🏭</div>
+                    <h4>Прямо с фабрики</h4>
+                    <p>Никаких посредников — продукция идёт напрямую от производителей Узбекистана.</p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">💎</div>
+                    <h4>Высшее качество</h4>
+                    <p>Чистый узбекский хлопок, строгий контроль на всех этапах производства.</p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">💰</div>
+                    <h4>Цена ниже рынка</h4>
+                    <p>Наши оптовые цены на 30-50% ниже среднерыночных в СНГ и РФ.</p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">🤝</div>
+                    <h4>Комиссия 25-30%</h4>
+                    <p>Я как агент получаю свой процент — вы получаете лучшую цену, я зарабатываю честно.</p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">🚚</div>
+                    <h4>Быстрая логистика</h4>
+                    <p>Отлаженные маршруты поставок в РФ, Казахстан, Беларусь и другие страны.</p>
+                </div>
+                <div class="adv-card">
+                    <div class="adv-icon">🔒</div>
+                    <h4>Безопасная сделка</h4>
+                    <p>Прозрачные условия, договор, сопровождение на всех этапах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROMO BANNER ==================== -->
+    <section class="section">
+        <div class="container">
+            <div class="promo-banner">
+                <h3>🔥 Специальное предложение для новых партнёров</h3>
+                <p>Первая пробная партия — со скидкой 15%. Убедитесь в качестве лично, прежде чем делать крупный заказ.</p>
+                <a href="#contact" class="btn btn-white">Получить пробную партию</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIDEO SECTION ==================== -->
+    <section class="section">
+        <div class="container">
+            <div class="video-section">
+                <span class="section-label" style="color:rgba(255,255,255,0.7);">🎬 Видео</span>
+                <h2 class="section-title">Посмотрите на наше производство</h2>
+                <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.7);">Экскурсия по фабрике в Узбекистане — убедитесь в качестве своими глазами.</p>
+                <div class="video-placeholder" id="videoPlaceholder" onclick="openVideo()">
+                    <div class="play-btn">▶</div>
+                </div>
+                <p style="margin-top:12px;color:rgba(255,255,255,0.5);font-size:0.85rem;">Нажмите для просмотра видео</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REVIEWS ==================== -->
+    <section class="section" id="reviews" style="background:#fff;">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">💬 Отзывы</span>
+                <h2 class="section-title">Что говорят наши партнёры</h2>
+                <p class="section-subtitle mx-auto">Более 500 довольных клиентов по всему СНГ.</p>
+            </div>
+            <div class="reviews-slider" id="reviewsSlider">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«Заказал пробную партию — качество превзошло ожидания! Хлопок действительно чистый, мягкий. Цена в 2 раза ниже, чем у местных поставщиков. Теперь работаем на постоянной основе.»</p>
+                    <div class="review-author">Алексей М.</div>
+                    <div class="review-company">ООО "ТекстильТорг", Москва</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«Работаю с Loik Seller уже полгода. За это время продал более 20 000 пар. Маржинальность отличная, клиенты довольны качеством. Рекомендую!»</p>
+                    <div class="review-author">Сергей К.</div>
+                    <div class="review-company">ИП "СоксПлюс", Алматы</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«Наконец-то нашёл надёжного поставщика носков из Узбекистана. Цены реально ниже рынка, логистика быстрая. Сотрудничеством полностью довольна.»</p>
+                    <div class="review-author">Елена В.</div>
+                    <div class="review-company">Сеть магазинов "Комфорт", Минск</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«Прозрачная схема работы, агент всегда на связи. Комиссия 30% — справедливо, учитывая качество и цену продукта. Продолжаем расширять ассортимент.»</p>
+                    <div class="review-author">Дмитрий Р.</div>
+                    <div class="review-company">"ГрандТекс", Санкт-Петербург</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COMMISSION CALCULATOR ==================== -->
+    <section class="section" id="calculator">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">🧮 Калькулятор дохода</span>
+                <h2 class="section-title">Посчитайте свою комиссию</h2>
+                <p class="section-subtitle mx-auto">Я получаю 25-30% от суммы продаж. Двигайте ползунок, чтобы увидеть потенциальный доход.</p>
+            </div>
+            <div class="calculator-box">
+                <div class="calculator-label">Объём продаж: <strong id="salesValue">10 000</strong> $</div>
+                <input type="range" min="1000" max="100000" step="1000" value="10000" id="salesRange">
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);">
+                    <span>1 000 $</span><span>100 000 $</span>
+                </div>
+                <div style="margin-top:20px;">
+                    <div class="calculator-label">Ваша комиссия (25-30%):</div>
+                    <div class="calculator-result" id="commissionResult">2 500 – 3 000 $</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ / SUPPORT ==================== -->
+    <section class="section" id="faq" style="background:#fff;">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">❓ Поддержка</span>
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <p class="section-subtitle mx-auto">Ответы на самые популярные вопросы о сотрудничестве.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">Каков минимальный объём заказа? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-answer">Минимальная партия — от 500 пар. Для новых партнёров мы предлагаем пробную партию от 200 пар со скидкой 15%.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Как формируется цена и комиссия агента? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-answer">Цена включает фабричную стоимость + логистику + мою агентскую комиссию 25-30%. Итоговая цена всё равно на 30-50% ниже рыночной в СНГ/РФ.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Какие сроки поставки? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-answer">Стандартный срок — 10-18 дней с момента подтверждения заказа. Экспресс-доставка доступна за дополнительную плату (5-8 дней).</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Есть ли сертификаты качества? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-answer">Да, вся продукция сертифицирована по стандартам ГОСТ и имеет международные сертификаты качества хлопка. Документы предоставляем по запросу.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Как происходит оплата? <span class="faq-arrow">▾</span></button>
+                    <div class="faq-answer">Работаем по договору. Оплата: 50% предоплата, 50% после отгрузки. Для постоянных партнёров — гибкие условия.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">📞 Связь с нами</span>
+                <h2 class="section-title">Готовы начать сотрудничество?</h2>
+                <p class="section-subtitle mx-auto">Оставьте заявку — я свяжусь с вами в течение 2 часов.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h5>Email</h5>
+                            <span>loik.seller@cotton-uz.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h5>Telegram / WhatsApp</h5>
+                            <span>+998 90 123 45 67</span>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h5>Офис</h5>
+                            <span>Узбекистан, Ташкент, ул. Хлопковая, 15</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="Ваше имя *" required>
+                    <input type="email" placeholder="Email *" required>
+                    <input type="tel" placeholder="Телефон (Telegram/WhatsApp)">
+                    <textarea placeholder="Сообщение: укажите интересующий объём и вид продукции..."></textarea>
+                    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">🚀 Отправить заявку</button>
+                    <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:10px;">Я отвечу в течение 2 часов!</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4>🧦 Loik Seller</h4>
+                <p style="font-size:0.9rem;line-height:1.6;">Агентская компания по поставкам премиальных носков из узбекского хлопка. Работаем с 2019 года.</p>
+            </div>
+            <div>
+                <h4>Навигация</h4>
+                <a href="#products">Продукция</a>
+                <a href="#advantages">Преимущества</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#faq">Поддержка</a>
+            </div>
+            <div>
+                <h4>Продукция</h4>
+                <a href="#products">Мужские носки</a>
+                <a href="#products">Женские носки</a>
+                <a href="#products">Детские носки</a>
+                <a href="#products">Спортивные</a>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <a href="https://t.me/loikseller" target="_blank">Telegram</a>
+                <a href="https://wa.me/998901234567" target="_blank">WhatsApp</a>
+                <a href="mailto:loik.seller@cotton-uz.com">Email</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2024 Loik Seller. Все права защищены. | Узбекистан, Ташкент | Комиссия агента 25-30%
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING BUTTONS ==================== -->
+    <div class="float-btns">
+        <a href="https://t.me/loikseller" target="_blank" class="float-btn tg" title="Telegram">✈</a>
+        <a href="https://wa.me/998901234567" target="_blank" class="float-btn wa" title="WhatsApp">💬</a>
+    </div>
+
+    <script>
+        // ========== PARTICLES ==========
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const maxParticles = 55;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 2.5 + 0.8;
+                this.speedY = Math.random() * 0.6 + 0.2;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.15;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y > canvas.height + 20) {
+                    this.reset();
+                    this.y = -10;
+                }
+                if (this.x < -20) this.x = canvas.width + 20;
+                if (this.x > canvas.width + 20) this.x = -20;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(180,150,90,${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < maxParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ========== HEADER SCROLL SHADOW ==========
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // ========== BURGER MENU ==========
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('navLinks');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMenu() {
+            burger.classList.remove('active');
+            navLinks.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // ========== STATS COUNTER ANIMATION ==========
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach(el => {
+                        const target = parseInt(el.getAttribute('data-count'));
+                        const duration = 1800;
+                        const start = performance.now();
+                        const initial = 0;
+
+                        function update(now) {
+                            const elapsed = now - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(initial + (target - initial) * eased);
+                            el.textContent = current + (target === 30 || target === 50 ?
+                                '%' : '+');
+                            if (progress < 1) requestAnimationFrame(update);
+                        }
+                        requestAnimationFrame(update);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        if (statNumbers.length > 0) statsObserver.observe(statNumbers[0].closest('.stats-row'));
+
+        // ========== REVIEWS SLIDER AUTO-SCROLL ==========
+        const slider = document.getElementById('reviewsSlider');
+        let isDown = false,
+            startX, scrollLeftPos;
+        slider.addEventListener('mousedown', (e) => { isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeftPos = slider.scrollLeft;
+            slider.style.cursor = 'grabbing'; });
+        slider.addEventListener('mouseleave', () => { isDown = false;
+            slider.style.cursor = 'grab'; });
+        slider.addEventListener('mouseup', () => { isDown = false;
+            slider.style.cursor = 'grab'; });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeftPos - walk;
+        });
+        // Auto-scroll
+        let autoScroll = setInterval(() => {
+            if (!isDown) {
+                slider.scrollBy({ left: 1.5, behavior: 'smooth' });
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+                    slider.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+            }
+        }, 40);
+        slider.addEventListener('mouseenter', () => clearInterval(autoScroll));
+        slider.addEventListener('mouseleave', () => {
+            autoScroll = setInterval(() => {
+                if (!isDown) {
+                    slider.scrollBy({ left: 1.5, behavior: 'smooth' });
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' });
+                    }
+                }
+            }, 40);
+        });
+
+        // ========== FAQ ACCORDION ==========
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(f => f.classList.remove(
+                    'active'));
+                // Open clicked (if wasn't active)
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // ========== COMMISSION CALCULATOR ==========
+        const salesRange = document.getElementById('salesRange');
+        const salesValue = document.getElementById('salesValue');
+        const commissionResult = document.getElementById('commissionResult');
+        salesRange.addEventListener('input', () => {
+            const val = parseInt(salesRange.value);
+            salesValue.textContent = val.toLocaleString('ru-RU');
+            const low = Math.round(val * 0.25);
+            const high = Math.round(val * 0.30);
+            commissionResult.textContent = low.toLocaleString('ru-RU') + ' – ' + high.toLocaleString(
+                'ru-RU') + ' $';
+        });
+
+        // ========== VIDEO MODAL ==========
+        function openVideo() {
+            const placeholder = document.getElementById('videoPlaceholder');
+            placeholder.innerHTML = `
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+            style="border-radius:16px;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>`;
+            placeholder.style.border = 'none';
+            placeholder.style.padding = '0';
+            placeholder.style.cursor = 'default';
+            placeholder.onclick = null;
+        }
+
+        // ========== CONTACT FORM ==========
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Заявка отправлена!';
+            btn.style.background = '#22c55e';
+            btn.style.boxShadow = '0 6px 28px rgba(34,197,94,0.4)';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                btn.style.boxShadow = '';
+                e.target.reset();
+            }, 3000);
+        }
+
+        // ========== SCROLL ANIMATIONS ==========
+        const animatedElements = document.querySelectorAll(
+            '.product-card, .adv-card, .stat-card, .review-card, .faq-item, .calculator-box, .promo-banner, .video-section'
+            );
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            scrollObserver.observe(el);
+        });
+
+        // Initial visible elements
+        setTimeout(() => {
+            document.querySelectorAll('.hero-inner > *').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }, 100);
+
+        console.log('%c🧦 Loik Seller %c— Готов к работе! %cКомиссия 25-30%',
+            'font-size:1.4em;font-weight:bold;color:#c8963e;',
+            'font-size:1em;color:#0c1e3a;',
+            'font-size:0.9em;color:#22c55e;');
+        console.log('%cСайт загружен. Все системы работают исправно.',
+        'color:#64748b;');
+    </script>
+</body>
+</html>
